@@ -125,15 +125,15 @@ const imgBuyut = document.querySelectorAll("img")
 //     ev.stopPropagation();
 // });
 
-// const img = document.getElementById("#img-1");
-//         function enlargeImg() {
-//             img.style.transform = "scale(1.5)";
-//             img.style.transition = "transform 0.25s ease";
-//         }
-//         function resetImg() {
-//             img.style.transform = "scale(1)";
-//             img.style.transition = "transform 0.25s ease";
-//         }
+const img = document.getElementById("#img-1");
+        function enlargeImg() {
+            img.style.transform = "scale(1.5)";
+            img.style.transition = "transform 0.25s ease";
+        }
+        function resetImg() {
+            img.style.transform = "scale(1)";
+            img.style.transition = "transform 0.25s ease";
+        }
 
 const destH = document.querySelectorAll(".destination h4");
 for(let i = 0; i < destH.length; i++) {
