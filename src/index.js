@@ -31,21 +31,34 @@ window.addEventListener("load", (e) => {
   alert("Karanlık mod için 2'ye basınız.");
 });
 
-window.addEventListener("wheel", (wh) => {
-console.log("You wheeled in div");
+window.addEventListener("wheel", (event) => {
+console.log("You wheeled in div", event);
+});
+
+window.addEventListener("scroll", (event) => {
+  console.log("You scrolled in div", event);
 })
-  
+
+  let mode = "lightMode";
  const bodyLetters = document.querySelector("body");
  bodyLetters.addEventListener("keydown", (callback) => {
   if(callback.key == 2) {
-    bodyLetters.style.color = "white";
-    bodyLetters.style.backgroundColor = "black";
+    if(mode == "lightMode") {
+      mode = "darkMode";
+      bodyLetters.style.color = "white";
+      bodyLetters.style.backgroundColor = "black";
+    }
+    else {     
+        mode = "lightMode"
+        bodyLetters.style.color = "black";
+        bodyLetters.style.letterSpacing = "0px";
+        bodyLetters.style.backgroundColor = "white"
+      
+    }
+   
   }
-  else if(callback.key == 1) {
-    bodyLetters.style.color = "black";
-    bodyLetters.style.letterSpacing = "0px";
-    bodyLetters.style.backgroundColor = "white"
-  }
+
+ 
  });
 const headerLetters = document.querySelector("header .main-navigation");
 headerLetters.addEventListener("keydown", (callback) => {
@@ -56,27 +69,23 @@ headerLetters.addEventListener("keydown", (callback) => {
 })
 
 
- window.addEventListener("scroll", (myFunction) => {
-  console.log("You scrolled in div!");
- });
 
- const btn = document.querySelector(".btn");
- document.querySelectorAll(".btn").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    btn.target.style.backgroundColor = "red";
+ document.querySelectorAll(".btn").forEach((e) => {
+  e.addEventListener("mouseenter", (event) => {
+    e.style.backgroundColor = "red";
   });
 });
 
-const imgBuyut = document.querySelectorAll("img")
-    imgBuyut.forEach(resim => {
+document.querySelectorAll("img").forEach((resim) => {
         resim.addEventListener("dblclick", (event) => {
-            if(event.target.style.width === "100px"){
-                event.target.style.width = ""
+            if(resim.target.style.width === "100px"){
+                resim.target.style.width = ""
             }else{
-                event.target.style.width = "100px";
+                resim.target.style.width = "100px";
             }
         })
-    })
+    });
+    
 
 
 //   var randomColor = getRandomColor();
@@ -135,9 +144,10 @@ const img = document.getElementById("#img-1");
             img.style.transition = "transform 0.25s ease";
         }
 
-const destH = document.querySelectorAll(".destination h4");
-for(let i = 0; i < destH.length; i++) {
-  destH[i].addEventListener("mouseenter", () => {
-    destH.style.color = "red";
+document.querySelectorAll(".destination h4").forEach((item) => {
+  item.addEventListener("mouseenter", (event) => {
+    item.style.color = "red";
   })
-};
+})
+
+
